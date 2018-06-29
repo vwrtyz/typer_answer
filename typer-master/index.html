@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Qerja - Typer</title>
+<script type='text/javascript' src='./jquery-1.11.1.js'></script>
+<script type='text/javascript' src='./jquery-ui-1.10.4.js'></script>
+<script type='text/javascript' src='./underscore.js'></script>
+<script type='text/javascript' src='./backbone.js'></script>
+<script type='text/javascript' src='./typer.js'></script>
+<link rel='stylesheet' href='./bootstrap.css' />
+<link rel='stylesheet' href='./bootstrap-theme.css' />
+<link rel='stylesheet' href='./jquery-ui-1.10.4.css' />
+<link rel='stylesheet' href='./typer.css' />
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+<script type="text/javascript">
+var company_names = ["Agung Podomoro Group","Citibank","Nokia Solution and Networks PT","Bhinneka.com","Tripatra","RCTI","TelkomSigma","Intrias Mandiri Sejati PT","Altermyth","Panin Bank","Gramedia Bookstore","Garuda Indonesia","Chevron Pacific","Darmex Agro","Bank SBI Indonesia PT","DBS Bank","UPS Cardig International PT","Tately NV","Cigna","Antam"];
+
+var paused=0;
+var started=0;
+var stopped=0;
+var typer;
+//Start, Stop, Pause, Resume ---> soal no 4
+function start()
+{
+	if(!stopped)
+	{
+		if(!started)
+		{
+			$(document).ready(function() {
+			typer = new Typer();
+			typer.start();
+			});
+			started=1;
+			document.getElementById("mulai").innerHTML="Stop";
+			return;
+		}
+		
+		if(started)
+		{
+			clearInterval(interval);
+			alert("Your Score"+score);
+			document.getElementById("mulai").innerHTML="Restart";
+			stopped=1;
+			return;
+		}
+	}
+	else
+	{
+		location.reload();
+	}
+	return;
+}
+
+function pause()
+{
+	if(!stopped)
+	{
+		if(!paused)
+		{
+			clearInterval(interval);
+			document.getElementById("jeda").innerHTML="Resume";
+			paused=1;
+			return;
+		}
+		if(paused)
+		{
+			typer.start();
+			paused=0;
+			document.getElementById("jeda").innerHTML="Pause";
+			return;
+		}
+
+	}
+	return;
+}
+
+</script>
+<div class="tombol">
+	<button id="mulai" onclick="start()">Start</button>
+	<button id="jeda" onclick="pause()">Pause</button>
+</div>
+<!-- soal no 6, sistem score-->
+<div class="pull-right nilai">
+	Score
+	<div id="score">
+	0
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+body {
+	background-color:#eee;
+}
+
+.tombol{
+	margin-left: 5px;
+	margin-top: 2px;
+	position: fixed;
+	z-index: 2;
+}
+
+.nilai{
+	font-size: 18px;
+	margin-right: 15px;
+}
+
+#score{
+	display: inline-block;
+}
